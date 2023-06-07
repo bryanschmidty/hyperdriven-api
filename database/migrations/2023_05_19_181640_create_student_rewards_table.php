@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('student_rewards', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('child_id')->constrained('children')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->enum('reward_type', ['mini_game', 'points']);
             $table->integer('points_earned')->nullable();
             $table->timestamps();

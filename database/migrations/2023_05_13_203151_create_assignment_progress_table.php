@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('assignment_progress', function (Blueprint $table) {
             $table->id();
             $table->foreignId('assignment_id')->constrained('class_assignments')->onDelete('cascade');
-            $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamp('start_time');
             $table->timestamp('end_time');
             $table->enum('status', ['in_progress', 'completed', 'paused']);

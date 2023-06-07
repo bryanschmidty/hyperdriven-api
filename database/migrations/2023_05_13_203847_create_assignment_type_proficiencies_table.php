@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('assignment_type_proficiencies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('assignment_type_id')->constrained()->onDelete('cascade');
             $table->enum('evaluated_by', ['parent', 'student']);
             $table->integer('proficiency_score');

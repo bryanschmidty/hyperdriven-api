@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use http\Env\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -15,12 +17,16 @@ class LoginController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+            'phone' => 'nullable|string|min:10|max:15',
+            'user_type' => 'required|in:parent,student',
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'phone' => $request->phone,
+            'type' => $request->user_type
         ]);
 
         $token = $user->createToken('authToken')->plainTextToken;
@@ -54,6 +60,11 @@ class LoginController extends Controller
                 'token' => $token,
             ],
         ]);
+    }
+
+    public function whoami(Request $request): JsonResponse
+    {
+        return response()->json(['user' => $request->user()], 200);
     }
 
     public function logout(Request $request): JsonResponse
