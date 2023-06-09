@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('test.layout')
 
 @section('title', 'Update Parent')
 
@@ -29,7 +29,7 @@
         });
 
 
-        document.getElementById('update-parent-form').addEventListener('submit', function(event) {
+        document.getElementById('update-parent-form').addEventListener('submit', function (event) {
             event.preventDefault();
 
             var body = {

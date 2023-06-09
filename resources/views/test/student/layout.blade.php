@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('test.layout')
 
 @section('content')
     <select id="selectUser">

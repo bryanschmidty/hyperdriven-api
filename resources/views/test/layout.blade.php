@@ -49,27 +49,30 @@
 <body>
     <div class="app-container">
         <nav class="sidebar">
+            <ul>
+                <li><a href="{{ url('test') }}">Home</a></li>
+            </ul>
             <div id="user-name">No user</div>
             <ul>
                 <h3>Login</h3>
-                <li><a href="{{ url('login/register') }}">Register</a></li>
-                <li><a href="{{ url('login/login') }}">Login</a></li>
-                <li><a href="{{ url('login/logout') }}">Logout</a></li>
+                <li><a href="{{ url('test/login/register') }}">Register</a></li>
+                <li><a href="{{ url('test/login/login') }}">Login</a></li>
+                <li><a href="{{ url('test/login/logout') }}">Logout</a></li>
             </ul>
 
             <ul>
                 <h3>Parent</h3>
-                <li><a href="{{ url('parent/show') }}">Show Parent</a></li>
-                <li><a href="{{ url('parent/update') }}">Update Parent</a></li>
+                <li><a href="{{ url('test/parent/show') }}">Show Parent</a></li>
+                <li><a href="{{ url('test/parent/update') }}">Update Parent</a></li>
             </ul>
 
             <ul>
                 <h3>Student</h3>
-                <li><a href="{{ url('student/index') }}">All Students</a></li>
-                <li><a href="{{ url('student/show') }}">Show Student</a></li>
-                <li><a href="{{ url('student/create') }}">Create Student</a></li>
-                <li><a href="{{ url('student/update') }}">Update Student</a></li>
-                <li><a href="{{ url('student/delete') }}">Delete Student</a></li>
+                <li><a href="{{ url('test/student/index') }}">All Students</a></li>
+                <li><a href="{{ url('test/student/show') }}">Show Student</a></li>
+                <li><a href="{{ url('test/student/create') }}">Create Student</a></li>
+                <li><a href="{{ url('test/student/update') }}">Update Student</a></li>
+                <li><a href="{{ url('test/student/delete') }}">Delete Student</a></li>
             </ul>
         </nav>
 

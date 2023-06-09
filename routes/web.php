@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,22 +19,26 @@ Route::get('/', function () {
 });
 
 if (app()->environment('local')) {
-    Route::prefix('login')->group(function () {
-        Route::view('register', 'login.register');
-        Route::view('login', 'login.login');
-        Route::view('logout', 'login.logout');
-    });
+    Route::prefix('test')->group(function () {
+        Route::view('', 'test.index');
 
-    Route::prefix('parent')->group(function () {
-        Route::view('show', 'parent.show');
-        Route::view('update', 'parent.update');
-    });
+        Route::prefix('login')->group(function () {
+            Route::view('register', 'test.login.register');
+            Route::view('login', 'test.login.login');
+            Route::view('logout', 'test.login.logout');
+        });
 
-    Route::prefix('student')->group(function () {
-        Route::view('index', 'student.index');
-        Route::view('show', 'student.show');
-        Route::view('create', 'student.create');
-        Route::view('update', 'student.update');
-        Route::view('delete', 'student.delete');
+        Route::prefix('parent')->group(function () {
+            Route::view('show', 'test.parent.show');
+            Route::view('update', 'test.parent.update');
+        });
+
+        Route::prefix('student')->group(function () {
+            Route::view('index', 'test.student.index');
+            Route::view('show', 'test.student.show');
+            Route::view('create', 'test.student.create');
+            Route::view('update', 'test.student.update');
+            Route::view('delete', 'test.student.delete');
+        });
     });
 }

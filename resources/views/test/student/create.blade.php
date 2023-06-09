@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('test.layout')
 
 @section('title', 'Create Student')
 

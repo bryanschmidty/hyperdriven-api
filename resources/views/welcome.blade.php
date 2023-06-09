@@ -20,27 +20,33 @@
             color: white;
             font-family: 'Courier New', monospace, serif;
             text-align: center;
-            pointer-events: none;
             font-size: 11vw;
             user-select: none;
+        }
+
+        h1 a {
+            color: #fff;
+            text-decoration: none;
+            cursor: default;
         }
     </style>
     <title>Hyperdriven</title>
 </head>
 <body>
 <canvas id="canvas"></canvas>
-<h1>Hyperdriven</h1>
+<h1>Hyper<a href="/test">d</a>riven</h1>
 <script>
     // Configuration
-    const nodeCount = 50;
+    const nodeCount = 80;
     const nodeRadius = 1;
     const nodeMinSpeed = .1; // minimum node speed
     const nodeMaxSpeed = 1; // maximum node speed
+    const maxConnections = 4; // maximum number of connections per node
     const lineDistance = 300; // distance between nodes to draw a line
     const lineColorBase = 70;
-    const mouseEffectRadius = 200; // radius of the mouse effect
-    const mouseEffectSpeedFactor = 4; // factor by which the speed is increased
-    const mouseEffectSizeFactor = 3; // factor by which the size is increased
+    const mouseEffectRadius = 100; // radius of the mouse effect
+    const mouseEffectSpeedFactor = 1; // factor by which the speed is increased
+    const mouseEffectSizeFactor = 1; // factor by which the size is increased
 
     // Create canvas
     const canvas = document.getElementById('canvas');
@@ -94,6 +100,7 @@
             if (node.x < 0 || node.x > canvas.width) node.dx = -node.dx;
             if (node.y < 0 || node.y > canvas.height) node.dy = -node.dy;
 
+            let numConnections = 0;
             for (let j = i + 1; j < nodes.length; j++) { // change nodeCount to nodes.length
                 const node2 = nodes[j];
 
@@ -108,7 +115,10 @@
                     ctx.lineTo(node2.x, node2.y);
                     ctx.strokeStyle = 'rgb(' + color + ',' + color + ',' + color + ')';
                     ctx.stroke();
+                    numConnections++;
                 }
+
+                if (numConnections >= maxConnections) break;
             }
 
             // Mouse effect

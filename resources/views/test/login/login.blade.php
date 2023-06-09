@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('test.layout')
 
 @section('title', 'Login')
 
@@ -10,16 +10,16 @@
         <option>Select User</option>
     </select>
 
-<form id="loginForm">
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email" required><br>
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" value="password" required><br>
-    <button type="button" id="submitBtn">Submit</button>
-</form>
+    <form id="loginForm">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" value="password" required><br>
+        <button type="button" id="submitBtn">Submit</button>
+    </form>
 
     <script>
-        document.getElementById('submitBtn').addEventListener('click', function(e) {
+        document.getElementById('submitBtn').addEventListener('click', function (e) {
             e.preventDefault();
 
             let request = {
@@ -33,7 +33,7 @@
             })
         });
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             callApi('GET', 'admin/users')
                 .then(users => {
                     let select = document.getElementById('selectUser');

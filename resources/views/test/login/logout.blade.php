@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('test.layout')
 
 @section('title', 'Logout')
 
@@ -9,7 +9,7 @@
     <button id="logoutBtn">Logout</button>
 
     <script>
-        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+        document.getElementById('logoutBtn').addEventListener('click', function (e) {
             e.preventDefault();
 
             callApi('POST', 'logout').then(() => {
